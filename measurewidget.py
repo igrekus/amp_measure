@@ -128,23 +128,40 @@ class MeasureWidgetWithSecondaryParameters(MeasureWidget):
         self._params = 0
 
         self._spinFreq = QDoubleSpinBox(parent=self)
-        self._devices._layout.addRow('F=', self._spinFreq)
+        self._spinFreq.setMinimum(0)
+        self._spinFreq.setMaximum(20_000)
+        self._spinFreq.setSingleStep(1)
+        self._devices._layout.addRow('F=', self._spinFreq)   # 0 .. 20k
 
         self._spinDeltaFreq = QDoubleSpinBox(parent=self)
-        self._devices._layout.addRow('ΔF=', self._spinDeltaFreq)
+        self._spinDeltaFreq.setMinimum(0)
+        self._spinDeltaFreq.setMaximum(100)
+        self._spinDeltaFreq.setSingleStep(1)
+        self._devices._layout.addRow('ΔF=', self._spinDeltaFreq)   # 0..100, 1
 
         self._spinPmin = QDoubleSpinBox(parent=self)
-        self._devices._layout.addRow('Pmin=', self._spinPmin)
+        self._spinPmin.setMinimum(-30)
+        self._spinPmin.setMaximum(20)
+        self._spinPmin.setSingleStep(0.1)
+        self._devices._layout.addRow('Pmin=', self._spinPmin)   # -30 ... 20
 
-        self._lblPmax = QLabel('Pmax=')
         self._spinPmax = QDoubleSpinBox(parent=self)
-        self._devices._layout.addRow('Pmax=', self._spinPmax)
+        self._spinPmax.setMinimum(-30)
+        self._spinPmax.setMaximum(20)
+        self._spinPmax.setSingleStep(0.1)
+        self._devices._layout.addRow('Pmax=', self._spinPmax)   # -30 .. 20, 0.1
 
         self._spinDeltaP1 = QDoubleSpinBox(parent=self)
-        self._devices._layout.addRow('ΔP1=', self._spinDeltaP1)
+        self._spinDeltaP1.setMinimum(-5)
+        self._spinDeltaP1.setMaximum(10)
+        self._spinDeltaP1.setSingleStep(0.01)
+        self._devices._layout.addRow('ΔP1=', self._spinDeltaP1)   # -5 .. 10
 
         self._spinDeltaP2 = QDoubleSpinBox(parent=self)
-        self._devices._layout.addRow('ΔP2=', self._spinDeltaP2)
+        self._spinDeltaP2.setMinimum(-4)
+        self._spinDeltaP2.setMaximum(10)
+        self._spinDeltaP2.setSingleStep(0.01)
+        self._devices._layout.addRow('ΔP2=', self._spinDeltaP2)   # -5 .. 10, step .01
 
     def _modePreConnect(self):
         super()._modePreConnect()
