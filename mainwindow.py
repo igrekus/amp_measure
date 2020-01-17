@@ -59,26 +59,6 @@ class MainWindow(QMainWindow):
     def on_instrumens_connected(self):
         print(f'connected {self._instrumentController}')
 
-    @pyqtSlot(QModelIndex)
-    def on_tableControl_clicked(self, index):
-        col = index.column()
-        if col in (0, 1):
-            return
-        secondary = self._measureWidget._selectedSecondaryParam
-        point_params = self._controlModel.getParamsForRow(index.row(), secondary)
-        self._ui.tableControl.setEnabled(False)
-        self._instrumentController.tuneToPoint(
-            point_params,
-            self._measureWidget._selectedSecondaryParam,
-            harmNum=col - 1,
-            power=self._ui.comboPow.currentText()[:2]
-        )
-        self._ui.tableControl.setEnabled(True)
-
-    @pyqtSlot(QModelIndex)
-    def on_tableControl_activated(self, index):
-        self.on_tableControl_clicked(index)
-
     @pyqtSlot()
     def on_btnOff_clicked(self):
         self._instrumentController.rigTurnOff()
