@@ -59,10 +59,3 @@ class MainWindow(QMainWindow):
     def on_instrumens_connected(self):
         print(f'connected {self._instrumentController}')
 
-    @pyqtSlot()
-    def on_btnOff_clicked(self):
-        self._instrumentController.rigTurnOff()
-
-    @pyqtSlot(int)
-    def on_spinRefLevel_valueChanged(self, value):
-        self._instrumentController.refLevel = value
