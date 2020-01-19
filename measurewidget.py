@@ -163,6 +163,16 @@ class MeasureWidgetWithSecondaryParameters(MeasureWidget):
         self._spinDeltaP2.setSingleStep(0.01)
         self._devices._layout.addRow('ΔP2=', self._spinDeltaP2)   # -5 .. 10, step .01
 
+        self._connectSignals()
+
+    def _connectSignals(self):
+        self._spinFreq.valueChanged.connect(self.on_params_changed)
+        self._spinDeltaFreq.valueChanged.connect(self.on_params_changed)
+        self._spinPmin.valueChanged.connect(self.on_params_changed)
+        self._spinPmax.valueChanged.connect(self.on_params_changed)
+        self._spinDeltaP1.valueChanged.connect(self.on_params_changed)
+        self._spinDeltaP2.valueChanged.connect(self.on_params_changed)
+
     def _modePreConnect(self):
         super()._modePreConnect()
         self._spinFreq.setEnabled(True)
@@ -196,3 +206,14 @@ class MeasureWidgetWithSecondaryParameters(MeasureWidget):
         self._threads.start(MeasureTask(self._controller.measure,
                                         self.measureTaskComplete,
                                         [self._selectedDevice, self._params]))
+
+    def on_params_changed(self, value):
+        params = {
+            'F': self._spinFreq.value(),
+            'dF': self._spinDeltaFreq.value(),
+            'Pmin': self._spinPmin.value(),
+            'Pmax': self._spinPmax.value(),
+            'dP1': self._spinDeltaP1.value(),
+            'dP2': self._spinDeltaP2.value()
+        }
+        self.secondaryChanged.emit(params)
