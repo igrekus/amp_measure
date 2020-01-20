@@ -127,11 +127,11 @@ class MeasureWidgetWithSecondaryParameters(MeasureWidget):
 
         self._params = 0
 
-        self._spinFreq = QDoubleSpinBox(parent=self)
-        self._spinFreq.setMinimum(0)
-        self._spinFreq.setMaximum(20_000)
-        self._spinFreq.setSingleStep(1)
-        self._devices._layout.addRow('F=', self._spinFreq)   # 0 .. 20k
+        # self._spinFreq = QDoubleSpinBox(parent=self)
+        # self._spinFreq.setMinimum(0)
+        # self._spinFreq.setMaximum(20_000)
+        # self._spinFreq.setSingleStep(1)
+        # self._devices._layout.addRow('F=', self._spinFreq)   # 0 .. 20k
 
         self._spinDeltaFreq = QDoubleSpinBox(parent=self)
         self._spinDeltaFreq.setMinimum(0)
@@ -171,7 +171,7 @@ class MeasureWidgetWithSecondaryParameters(MeasureWidget):
         self._connectSignals()
 
     def _connectSignals(self):
-        self._spinFreq.valueChanged.connect(self.on_params_changed)
+        # self._spinFreq.valueChanged.connect(self.on_params_changed)
         self._spinDeltaFreq.valueChanged.connect(self.on_params_changed)
         self._spinPmin.valueChanged.connect(self.on_params_changed)
         self._spinPmax.valueChanged.connect(self.on_params_changed)
@@ -180,23 +180,23 @@ class MeasureWidgetWithSecondaryParameters(MeasureWidget):
 
     def _modePreConnect(self):
         super()._modePreConnect()
-        self._spinFreq.setEnabled(True)
+        # self._spinFreq.setEnabled(True)
 
     def _modePreCheck(self):
         super()._modePreCheck()
-        self._spinFreq.setEnabled(True)
+        # self._spinFreq.setEnabled(True)
 
     def _modeDuringCheck(self):
         super()._modeDuringCheck()
-        self._spinFreq.setEnabled(False)
+        # self._spinFreq.setEnabled(False)
 
     def _modePreMeasure(self):
         super()._modePreMeasure()
-        self._spinFreq.setEnabled(False)
+        # self._spinFreq.setEnabled(False)
 
     def _modeDuringMeasure(self):
         super()._modeDuringMeasure()
-        self._spinFreq.setEnabled(False)
+        # self._spinFreq.setEnabled(False)
 
     def check(self):
         print('subclass checking...')
@@ -214,7 +214,7 @@ class MeasureWidgetWithSecondaryParameters(MeasureWidget):
 
     def on_params_changed(self, value):
         params = {
-            'F': self._spinFreq.value(),
+            # 'F': self._spinFreq.value(),
             'dF': self._spinDeltaFreq.value(),
             'Pmin': self._spinPmin.value(),
             'Pmax': self._spinPmax.value(),
