@@ -15,6 +15,8 @@ from instr.agilent34410a import Agilent34410A
 from instr.agilente3644a import AgilentE3644A
 from instr.agilentn5183a import AgilentN5183A
 from instr.agilentn9030a import AgilentN9030A
+# from excel import xlsx_result
+
 
 mock_enabled = True
 
@@ -224,8 +226,7 @@ class InstrumentController(QObject):
         self.hasResult = bool(raw_data)
 
         if self.hasResult:
-            # self.result.process_raw_data(device, secondary, raw_data)
-            pass
+            self._export_to_xlsx(raw_data)
 
     def _measure(self, device, secondary):
         param = self.deviceParams[device]
@@ -258,13 +259,10 @@ class InstrumentController(QObject):
 
         return result
 
-    def rigTurnOff(self):
-        print('power off rig')
-        self._instruments['Мультиметр'].send(f'*RST')
-        self._instruments['Генератор'].set_output(state='OFF')
-        self._instruments['Анализатор'].send(f':CALC:MARK1:MODE OFF')
-        self._instruments['Анализатор'].set_autocalibrate(state='ON')
-        self._instruments['Источник питания'].set_output(chan=1, state='OFF')
+    def _export_to_xlsx(self, result):
+        print('exporting result')
+        # xslx_result(result)
+        # xlsx_result.save('out.xlsx')
 
     @pyqtSlot(dict)
     def on_secondary_changed(self, params):
