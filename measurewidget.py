@@ -137,30 +137,35 @@ class MeasureWidgetWithSecondaryParameters(MeasureWidget):
         self._spinDeltaFreq.setMinimum(0)
         self._spinDeltaFreq.setMaximum(100)
         self._spinDeltaFreq.setSingleStep(1)
+        self._spinDeltaFreq.setValue(0.1)
         self._devices._layout.addRow('ΔF=', self._spinDeltaFreq)   # 0..100, 1
 
         self._spinPmin = QDoubleSpinBox(parent=self)
         self._spinPmin.setMinimum(-30)
         self._spinPmin.setMaximum(20)
         self._spinPmin.setSingleStep(0.1)
+        self._spinPmin.setValue(10.0)
         self._devices._layout.addRow('Pmin=', self._spinPmin)   # -30 ... 20
 
         self._spinPmax = QDoubleSpinBox(parent=self)
         self._spinPmax.setMinimum(-30)
         self._spinPmax.setMaximum(20)
         self._spinPmax.setSingleStep(0.1)
+        self._spinPmax.setValue(20.0)
         self._devices._layout.addRow('Pmax=', self._spinPmax)   # -30 .. 20, 0.1
 
         self._spinDeltaP1 = QDoubleSpinBox(parent=self)
         self._spinDeltaP1.setMinimum(-5)
         self._spinDeltaP1.setMaximum(10)
         self._spinDeltaP1.setSingleStep(0.01)
+        self._spinDeltaP1.setValue(1.0)
         self._devices._layout.addRow('ΔP1=', self._spinDeltaP1)   # -5 .. 10
 
         self._spinDeltaP2 = QDoubleSpinBox(parent=self)
         self._spinDeltaP2.setMinimum(-4)
         self._spinDeltaP2.setMaximum(10)
         self._spinDeltaP2.setSingleStep(0.01)
+        self._spinDeltaP2.setValue(1.0)
         self._devices._layout.addRow('ΔP2=', self._spinDeltaP2)   # -5 .. 10, step .01
 
         self._connectSignals()

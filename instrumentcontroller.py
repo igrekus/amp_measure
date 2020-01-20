@@ -175,7 +175,7 @@ class InstrumentController(QObject):
                 raw = ''.join(f.readlines())
                 self.deviceParams = ast.literal_eval(raw)
 
-        self.secondaryParams = {'F': 0.0, 'dF': 6.0, 'Pmin': 0.0, 'Pmax': 0.0, 'dP1': 0.0, 'dP2': 0.0}
+        self.secondaryParams = {'F': 1.0, 'dF': 0.1, 'Pmin': 10.0, 'Pmax': 20.0, 'dP1': 1.0, 'dP2': 1.0}
 
         self.span = 0.1
 
