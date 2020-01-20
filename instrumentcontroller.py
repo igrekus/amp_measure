@@ -175,12 +175,7 @@ class InstrumentController(QObject):
                 raw = ''.join(f.readlines())
                 self.deviceParams = ast.literal_eval(raw)
 
-        # TODO generate combo for secondary params
-        self.secondaryParams = {
-            0: 0,
-            1: 1,
-            2: 2
-        }
+        self.secondaryParams = {'F': 0.0, 'dF': 6.0, 'Pmin': 0.0, 'Pmax': 0.0, 'dP1': 0.0, 'dP2': 0.0}
 
         self.span = 0.1
 
