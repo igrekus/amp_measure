@@ -210,8 +210,8 @@ class InstrumentController(QObject):
         print('sample pass')
 
     def _check(self, device, secondary):
-        print(f'launch check with {self.deviceParams[device]} {self.secondaryParams[secondary]}')
-        return self.result.init() and self._runCheck(self.deviceParams[device], self.secondaryParams[secondary])
+        print(f'launch check with {self.deviceParams[device]} {self.secondaryParams}')
+        return self.result.init() and self._runCheck(self.deviceParams[device], self.secondaryParams)
 
     def _runCheck(self, param, secondary):
         print(f'run check with {param}, {secondary}')
@@ -229,7 +229,7 @@ class InstrumentController(QObject):
 
     def _measure(self, device, secondary):
         param = self.deviceParams[device]
-        secondary = self.secondaryParams[secondary]
+        secondary = self.secondaryParams
         print(f'launch measure with {param} {secondary}')
 
         return [1, 2], 0
