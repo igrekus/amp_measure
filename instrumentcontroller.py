@@ -179,7 +179,7 @@ class InstrumentController(QObject):
 
         self.span = 0.1
 
-        self._instruments = {}
+        self._instruments = dict()
         self.found = False
         self.present = False
         self.hasResult = False
