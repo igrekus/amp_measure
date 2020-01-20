@@ -37,6 +37,8 @@ class MainWindow(QMainWindow):
         self._connectionWidget.connected.connect(self.on_instrumens_connected)
         self._connectionWidget.connected.connect(self._measureWidget.on_instrumentsConnected)
 
+        self._measureWidget.secondaryChanged.connect(self._instrumentController.on_secondary_changed)
+
         self._measureWidget.measureComplete.connect(self._measureModel.update)
 
         self._ui.tableMeasure.setModel(self._measureModel)

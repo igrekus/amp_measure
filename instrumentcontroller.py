@@ -4,7 +4,7 @@ import visa
 from os.path import isfile
 from collections import defaultdict
 
-from PyQt5.QtCore import QObject
+from PyQt5.QtCore import QObject, pyqtSlot
 
 # MOCK
 from agilent34410amock import Agilent34410AMock
@@ -246,6 +246,9 @@ class InstrumentController(QObject):
         self._instruments['Анализатор'].send(f':CALC:MARK1:MODE OFF')
         self._instruments['Анализатор'].set_autocalibrate(state='ON')
         self._instruments['Источник питания'].set_output(chan=1, state='OFF')
+
+    def on_secondary_changed(self, params):
+        self.secondaryParams = params
 
     @property
     def status(self):
