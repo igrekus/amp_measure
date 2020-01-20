@@ -120,7 +120,7 @@ class MeasureWidget(QWidget):
 
 
 class MeasureWidgetWithSecondaryParameters(MeasureWidget):
-    secondaryChanged = pyqtSignal(str, int)
+    secondaryChanged = pyqtSignal(dict)
 
     def __init__(self, parent=None, controller=None):
         super().__init__(parent=parent, controller=controller)

@@ -247,6 +247,7 @@ class InstrumentController(QObject):
         self._instruments['Анализатор'].set_autocalibrate(state='ON')
         self._instruments['Источник питания'].set_output(chan=1, state='OFF')
 
+    @pyqtSlot(dict)
     def on_secondary_changed(self, params):
         self.secondaryParams = params
 
