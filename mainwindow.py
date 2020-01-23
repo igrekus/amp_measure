@@ -1,5 +1,6 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QMainWindow, QFileDialog
 from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot, QModelIndex
 
 from instrumentcontroller import InstrumentController
@@ -61,3 +62,18 @@ class MainWindow(QMainWindow):
     def on_instrumens_connected(self):
         print(f'connected {self._instrumentController}')
 
+    @pyqtSlot()
+    def on_actPPF_triggered(self):
+        file = self._getFileName('Выбрать файл калибровк...')
+        self._ui.label.setPixmap(QPixmap(file))
+
+    @pyqtSlot()
+    def on_actSparam_triggered(self):
+        print(self._getFileName('Выбрать файл S-параметров...'))
+
+    def _getFileName(self, title='', ext='Все файлы (*.*)'):
+        filename, _ = QFileDialog.getOpenFileName(parent=self,
+                                                  caption=title,
+                                                  directory='.',
+                                                  filter=ext)
+        return filename

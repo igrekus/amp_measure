@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1132</width>
-    <height>525</height>
+    <height>984</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -93,9 +93,17 @@
     <property name="title">
      <string>&amp;Файл</string>
     </property>
+    <addaction name="actSparam"/>
     <addaction name="actExit"/>
    </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>Калибровка</string>
+    </property>
+    <addaction name="actPPF"/>
+   </widget>
    <addaction name="menu"/>
+   <addaction name="menu_2"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actExit">
@@ -107,6 +115,16 @@
    </property>
    <property name="statusTip">
     <string>Выйти из приложения</string>
+   </property>
+  </action>
+  <action name="actPPF">
+   <property name="text">
+    <string>ППФ...</string>
+   </property>
+  </action>
+  <action name="actSparam">
+   <property name="text">
+    <string>S-параметры...</string>
    </property>
   </action>
  </widget>
